@@ -1,0 +1,6 @@
+appmap_dir: tmp/appmap
+language: python
+name: hngx_stage_2
+packages:
+  - path: api
+  - path: hngx_stage_2

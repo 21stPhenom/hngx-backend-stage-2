@@ -1,7 +1,7 @@
 import requests
 
-# endpoint = "https://hngx-task-2-ui07.onrender.com/api"
-endpoint = "http://127.0.0.1:8000/api/"
+endpoint = "https://hngx-task-2-ui07.onrender.com/api"
+# endpoint = "http://127.0.0.1:8000/api/"
 
 
 def send_request(method: str, user_id: int=None, name: str=None, data: dict=None):
@@ -42,13 +42,13 @@ def send_request(method: str, user_id: int=None, name: str=None, data: dict=None
         if name == None and user_id != None:
             assert type(user_id) == int, '`user_id` must be an integer.'
             endpoint_with_id = f"{endpoint}{user_id}"
-            response = requests.put(endpoint_with_id, data)
+            response = requests.put(endpoint_with_id, data=data)
             return response
         
         elif user_id == None and name != None:
             assert type(name) == str, '`name` must be a string.'
             endpoint_with_name = f"{endpoint}{name}"
-            response = requests.put(endpoint_with_name)
+            response = requests.put(endpoint_with_name, data=data)
 
             return response
         
@@ -65,17 +65,17 @@ def send_request(method: str, user_id: int=None, name: str=None, data: dict=None
             response = requests.delete(endpoint_with_name)
             return response
 
-# endpoint_1 = send_request('get')
-# endpoint_2 = send_request('get', user_id=12)
-# endpoint_3 = send_request('get', user_id=8)
-# endpoint_4 = send_request('post', data={'name': 'benjamin'})
-# endpoint_5 = send_request('put', user_id=12, data={"name": "einstein"})
-endpoint_6 = send_request('delete', name='kodecamp')
+endpoint_1 = send_request('get')
+endpoint_2 = send_request('get', user_id=20)
+endpoint_3 = send_request('get', name='putchar')
+endpoint_4 = send_request('post', data={'name': 'donald'})
+endpoint_5 = send_request('put', name='donald', data={"name": "regan"})
+endpoint_6 = send_request('delete', name='regan')
 
 
-# print(endpoint_1.json())
-# print(endpoint_2.json())
-# print(endpoint_3.json())
-# print(endpoint_4.json())
-# print(endpoint_5.json())
-print(endpoint_6.text)
+print(endpoint_1.json())
+print(endpoint_2.json())
+print(endpoint_3.json())
+print(endpoint_4.json())
+print(endpoint_5.json())
+print(endpoint_6.json())

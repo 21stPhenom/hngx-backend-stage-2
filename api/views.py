@@ -8,7 +8,7 @@ from api.models import Person
 from api.serializers import PersonSerializer
 
 # Create your views here.
-class BasePersonView(APIView):
+class BaseView(APIView):
     serializer = PersonSerializer
     queryset = Person.objects.all
 
@@ -36,7 +36,7 @@ class BasePersonView(APIView):
         # Return errors if the data is invalid
         return Response(new_person.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ReadUpdateDeleteView(APIView):
+class CRUDView(APIView):
     serializer = PersonSerializer
 
     def get(self, request, user_id=None, name=None, *args, **kwargs):
@@ -74,29 +74,20 @@ class ReadUpdateDeleteView(APIView):
     def delete(self, request, user_id=None, name=None, *args, **kwargs):
         # Check to confirm that either user_id or name is supplied to the view
         if user_id == None and name == None:
-            print("------- 1")
             return Response({
                 "message": "You must supply a user_id or name with this method.",
             }, status=status.HTTP_400_BAD_REQUEST)
 
         # Read info aobut a person using id or name
         if name:
-            print('-----2')
             person = get_object_or_404(Person, name=name)
             person.delete()
-        
-            return Response({
-                    "message": "Person deleted."
-                    }, status=status.HTTP_204_NO_CONTENT)
+            return Response({'message': 'Person deleted.'})
             
         elif user_id:
-            print('------3')
             person = get_object_or_404(Person, pk=user_id)
-            person.delete()
+            person.delete()        
+            return Response({'message': 'Person deleted.'})
         
-            return Response(data={
-                "message": "Person deleted.",
-                }, status=status.HTTP_204_NO_CONTENT)
-        
-base_view = BasePersonView.as_view()
-rud_view = ReadUpdateDeleteView.as_view()
+base_view = BaseView.as_view()
+rud_view = CRUDView.as_view()

@@ -1,6 +1,6 @@
 import requests
 
-endpoint = "https://hngx-task-2-ui07.onrender.com/api"
+endpoint = "https://hngx-task-2-ui07.onrender.com/api/"
 # endpoint = "http://127.0.0.1:8000/api/"
 
 
@@ -66,8 +66,8 @@ def send_request(method: str, user_id: int=None, name: str=None, data: dict=None
             return response
 
 endpoint_1 = send_request('get')
-endpoint_2 = send_request('get', user_id=20)
-endpoint_3 = send_request('get', name='putchar')
+endpoint_2 = send_request('get', user_id=3)
+endpoint_3 = send_request('get', name='enoch')
 endpoint_4 = send_request('post', data={'name': 'donald'})
 endpoint_5 = send_request('put', name='donald', data={"name": "regan"})
 endpoint_6 = send_request('delete', name='regan')

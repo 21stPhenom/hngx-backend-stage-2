@@ -51,7 +51,6 @@ class CRUDView(APIView):
         
     def put(self, request, user_id=None, name=None, *args, **kwargs):
         # Update info aobut a person using id or name
-        print(request.data.get('name'))
         if name:
             person = get_object_or_404(Person, name=name)
         else:

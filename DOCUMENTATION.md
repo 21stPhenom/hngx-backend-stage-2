@@ -19,6 +19,7 @@
     - Endpoint: `api/`
     - Method: `POST`
     - Body: `{"name": "enoch"}`
+   
     - Response (with unique name):
         - Status code: `201`
     ```json
@@ -42,7 +43,9 @@
     - Endpoint: `api/`
     - Method: `GET`
     - Example: `GET http://127.0.0.1:8000/api/`
-    - Response:
+    
+    - Response (success):
+        - Status code: `200`
     ```json
     [
         {
@@ -51,46 +54,86 @@
         },
     ]
     ```
-    - Status code: `200`
-
+    
+    - Response (not found):
+        - Status code: `404`
+    ```json
+    {
+        "detail": "Not found."
+    }
+    ```
 3. Get specific person:
     - Endpoint: `api/user_id` or `api/name`
     - Method: `GET`
     - Example: `GET http://127.0.0.1:8000/api/1` or `GET http://127.0.0.1:8000/api/enoch`
-    - Response:
+  
+    - Response (person found):
+        - Status code: `200`
     ```json
     {
         "id": 1,
         "name": "enoch"
     }
     ```
-    - Status code: `200`
+    - Response (not found):
+        - Status code: `404`
+    ```json
+    {
+        "detail": "Not found."
+    }
+    ```
 
 4. Update person:
     - Endpoint: `api/user_id` or `api/name`
     - Method: `PUT`
     - Body: `{"name": "isaac"}`
     - Example: `PUT http://127.0.0.1:8000/api/1` or `PUT http://127.0.0.1:8000/api/enoch`
-    - Response:
+  
+    - Response (person updated):
+        - Status code: `200`
     ```json
     {
         "id": 1,
         "name": "isaac"
     }
     ```
-    - Status code: `200`
+
+    - Response (if person with name 'enoch' already exists):
+        - Status code: `400`
+    ```json
+    {
+        "message": "Person with name `enoch` already exists."
+    }
+    ```
+
+    - Response (person not found):
+        - Status code: `404`
+    ```json
+    {
+        "detail": "Not found."
+    }
+    ```
 
 5. Delete person:
     - Endpoint: `api/user_id` or `api/name`
     - Method: `DELETE`
     - Example: `DELETE http://127.0.0.1:8000/api/1` or `DELETE http://127.0.0.1:8000/api/enoch`
+    
     - Response:
+        - Status code: `200`
     ```json
     {
         "message": "Person deleted"
     }
     ```
-    - Status code: `200`
+
+    - Response (person not found):
+        - Status code: `404`
+    ```json
+    {
+        "detail": "Not found."
+    }
+    ```
 ---
 ### Testing
 - To test your API, run `tester.py` in your virtual environment.

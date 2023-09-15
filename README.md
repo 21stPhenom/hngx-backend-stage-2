@@ -44,9 +44,11 @@ SECRET_KEY=<YOUR_SECRET_KEY>
 Replace `YOUR_SECRET_KEY` with your actual secret key.
 
 5. Go to `hngx_stage_2/settings.py` and change the `DATABASES` setting use a local SQLite database.
-Change this: ![hngx_stage_2/settings.py](./img/db_settings_remote.png)
+Change this:
+![hngx_stage_2/settings.py](./img/db_settings_remote.png)
 
-    To this: ![hngx_stage_2.settings.py](./img/db_settings_local.png)
+    To this:
+    ![hngx_stage_2.settings.py](./img/db_settings_local.png)
 
 6. Make migrations and migrate them to the database,
 ```bash

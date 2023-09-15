@@ -11,7 +11,8 @@
 ---
 
 #### Installation
-> [!IMPORTANT] Make sure you have Python 3.11.1 installed before setting up the project locally.
+> [!IMPORTANT]
+> Make sure you have Python 3.11.1 installed before setting up the project locally.
 
 1. Create a new directory for the project and clone the Github Repository
 ```bash
